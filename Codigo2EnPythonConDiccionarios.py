@@ -20,13 +20,16 @@ def mostrar_contactos():
 
 def buscar_contacto(nombre):
     nombre = nombre.lower()  
-    encontrado = 0
+    encontrados = []
 
     for clave, contacto in agenda.items():
-        if clave.lower() == nombre: 
-            print(f"Contacto encontrado: Nombre: {contacto[0]}, Teléfono: {contacto[1]}, mail: {contacto[2]}")
-            encontrado = 1
-    if encontrado == 0:
+        if nombre in clave.lower(): 
+            encontrados.append(contacto)
+            
+    if encontrados:
+        for contacto in encontrados: 
+            print(f"Nombre: {contacto[0]}, Telefono: {contacto[1]}, Mail: {contacto[2]}")
+    else:
         print(f"El contacto '{nombre}' no se encuentra en la agenda.")
         
         
